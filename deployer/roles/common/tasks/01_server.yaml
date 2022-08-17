@@ -8,6 +8,5 @@
     - acl
     - vim
     - python3
-    - psycopg2
     - python3-setuptools
     - git
