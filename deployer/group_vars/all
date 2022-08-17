@@ -23,17 +23,17 @@ db_user: "{{ deployer_user }}"
 
 # Application Dependencies Setup
 venv_dir: '/home/{{ deployer_user }}/envs/{{ app_name }}'
-venv_python: '{{ venv_dir }}/bin/python3.5'
+venv_python: '{{ venv_dir }}/bin/python3.10'
 
 # Remote Server Details
-server_ip: <remote-server-ip>
+server_ip: 54.144.251.227
 wsgi_server_port: 8000
 
 # Deploy Dir in App Directory
-deploy_dir: '{{ app_dir }}/deploy'
+deploy_dir: '{{ app_dir }}/deployer'
 
 # WSGI Vars
 django_wsgi_module: config.wsgi
-django_settings_module: config.settings.production
+django_settings_module: config.production
 django_secret_key: 'changeme'
 database_url: '{{ db_url }}'
