@@ -23,7 +23,7 @@ db_user: "{{ deployer_user }}"
 
 # Application Dependencies Setup
 venv_dir: '/home/{{ deployer_user }}/envs/{{ app_name }}'
-venv_python: '{{ venv_dir }}/bin/python3.10'
+venv_python: '{{ venv_dir }}/bin/python3'
 
 # Remote Server Details
 server_ip: 54.144.251.227

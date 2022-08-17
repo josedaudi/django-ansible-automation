@@ -16,6 +16,17 @@
   service: name=postgresql enabled=yes state=started
   become: yes
 
+- name: Create a virtualenv directory
+  file: path={{ venv_dir }} state=directory
+
+- name: Install dependencies
+  pip:    requirements={{ app_dir }}/requirements.txt
+          virtualenv={{ venv_dir }}
+          virtualenv_python=python3
+
+#- name: install psycopg2 python module
+#  pip: name=psycopg2 virtualenv={{ venv_dir }}
+
 - name: Create database
   postgresql_db: name={{ app_name }}
   become_user: postgres
