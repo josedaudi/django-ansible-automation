@@ -1,0 +1,23 @@
+- name: Create a new system group
+  become: yes
+  group: name={{deployer_group}} state=present
+
+- name: Allow '{{deployer_group}}' group to have passwordless sudo
+  become: yes
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%{{deployer_group}}'
+    line: '%{{deployer_group}} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Create a new system user
+  become: yes
+  user: name={{deployer_user}} groups={{deployer_group}} append=yes createhome=yes generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa #creates an ssh key in .ssh/id_rsa file
+#  sudo: yes
+
+- name: Read SSH public key
+  become: yes
+  slurp: src=/home/{{deployer_user}}/.ssh/id_rsa.pub
+  register: public_key
+- debug: msg="{{ public_key['content'] | b64decode }}"

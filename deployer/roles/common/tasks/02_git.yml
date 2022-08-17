@@ -6,5 +6,9 @@
   become: yes
 
 - name: Clone or pull the latest code
+  become_flags: '-HE'
+  become: yes
+  become_user: encipher
   git: repo={{ code_repository_url }}
+        accept_hostkey=yes
         dest={{ app_dir }}

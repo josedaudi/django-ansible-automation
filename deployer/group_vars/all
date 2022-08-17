@@ -2,8 +2,8 @@
 app_name: django_bootstrap
 
 # Deployer User and Groups
-deployer_user: deployer
-deployer_group: deployers
+deployer_user: encipher
+deployer_group: webapps
 
 # SSH Keys Directory
 ssh_dir: /Users/josedaudi/MEGA

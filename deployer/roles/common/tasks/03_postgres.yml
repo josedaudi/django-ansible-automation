@@ -5,14 +5,12 @@
   apt: name={{item}} state=latest
   become: yes
   with_items:
-    - postgresql-server
+    - postgresql
     - postgresql-contrib
-    - postgresql-devel
-    - python-psycopg2
 
-- name: Run initdb command
-  raw: postgresql-setup initdb
-  become: yes
+#- name: Run initdb command
+#  raw: initdb
+#  become: yes
 
 - name: Start and enable postgres
   service: name=postgresql enabled=yes state=started
